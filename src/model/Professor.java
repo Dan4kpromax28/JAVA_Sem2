@@ -39,7 +39,7 @@ public class Professor {
             this.name = name;
         }
         else {
-            
+            this.name = "None";
         }
 
     }
