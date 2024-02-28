@@ -1,20 +1,18 @@
 package model;
 
+public class Student {
+    private long stID;
 
-public class Professor {
-    //1.variables
-    private long pId;
     private String name;
+
     private String surname;
-    private Degree degree;
 
-    private static long counter = 0; // ja to maino kkur tas mainas visur
+    private static long counter = 10000;
 
+    // get and set functions
 
-    //2.get and set
-
-    public long getpId() {
-        return pId;
+    public long getStID() {
+        return stID;
     }
 
     public String getName() {
@@ -25,12 +23,8 @@ public class Professor {
         return surname;
     }
 
-    public Degree getDegree() {
-        return degree;
-    }
-
-    public void setpId() {
-        this.pId = counter;
+    public void setStID() {
+        this.stID = stID;
         counter++;
     }
 
@@ -41,7 +35,6 @@ public class Professor {
         else {
             this.name = "None";
         }
-
     }
 
     public void setSurname(String surname) {
@@ -53,35 +46,26 @@ public class Professor {
         }
     }
 
-    public void setDegree(Degree degree) {
-        this.degree = degree;
-    }
-    //3.constructor
-    public Professor() {
-        setpId();
+    public Student(){
+        setStID();
         this.name = "";
         this.surname = "";
-        this.degree = null;
     }
 
-    public Professor(String name, String surname, Degree degree){
-        setpId();
+    public Student(String name, String surname){
+        setStID();
         setName(name);
         setSurname(surname);
-        setDegree(degree);
     }
-    //4.toString function
+    // toString function
+
 
     @Override
     public String toString() {
-        return "Professor{" +
-                "pId=" + pId +
+        return "Student{" +
+                "stID=" + stID +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", degree=" + degree +
                 '}';
     }
-
-    //5.other function
-
 }
