@@ -52,8 +52,31 @@ public class Professor {
         this.degree = degree;
     }
     //3.constructor
+    public Professor() {
+        setpId();
+        this.name = "";
+        this.surname = "";
+        this.degree = null;
+    }
 
+    public Professor(String name, String surname, Degree degree){
+        setpId();
+        setName(name);
+        setSurname(surname);
+        setDegree(degree);
+    }
     //4.toString function
+
+    @Override
+    public String toString() {
+        return "Professor{" +
+                "pId=" + pId +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", degree=" + degree +
+                '}';
+    }
+
     //5.other function
 
 }
