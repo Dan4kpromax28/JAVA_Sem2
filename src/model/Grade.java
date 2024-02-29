@@ -2,29 +2,21 @@ package model;
 
 public class Grade {
     private long gID;
-
     private int value;
-
     private Student student;
-
     private Course course;
-
     private static long counter =  200000;
 
     // get and set
-
     public long getgID() {
         return gID;
     }
-
     public int getValue() {
         return value;
     }
-
     public Student getStudent() {
         return student;
     }
-
     public Course getCourse() {
         return course;
     }
@@ -34,7 +26,7 @@ public class Grade {
         counter++;
     }
 
-    public void setValue(int value) throws Exception {
+    public void setValue(int value) {
         if (value >= 0 && value <= 10){
             this.value = value;
         }
@@ -59,6 +51,20 @@ public class Grade {
             this.course = new Course();
         }
 
+    }
+
+    public Grade(){
+        setgID();
+        setValue(1);
+        setCourse(new Course());
+        setStudent(new Student());
+    }
+
+    public Grade(int value, Course course, Student student){
+        setgID();
+        setValue(value);
+        setCourse(course);
+        setStudent(student);
     }
 
 
