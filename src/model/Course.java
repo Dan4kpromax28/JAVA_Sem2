@@ -56,9 +56,9 @@ public class Course {
 
     public Course(){
         setcID();
-        this.title = "nav";
-        this.creditPoint = 0;
-        this.professor = new Professor();
+        setTitle("Prorammesana JAVA");
+        setCreditPoint(4);
+        setProfessor(new Professor());
     }
 
     public Course(String title, int creditPoint, Professor professor){
