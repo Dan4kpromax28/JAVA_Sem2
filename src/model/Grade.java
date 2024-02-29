@@ -27,7 +27,7 @@ public class Grade {
     }
 
     public void setValue(int value) {
-        if (value >= 0 && value <= 10){
+        if (value >= 0 && value < 11){
             this.value = value;
         }
         else {
@@ -77,4 +77,5 @@ public class Grade {
                 ", course=" + course +
                 '}';
     }
+    
 }
