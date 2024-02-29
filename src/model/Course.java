@@ -2,11 +2,8 @@ package model;
 
 public class Course {
     private long cID;
-
     private String title;
-
     private int creditPoint;
-
     private Professor professor;
 
     private static long counter = 100000;
@@ -30,39 +27,44 @@ public class Course {
     }
 
     public void setcID() {
-        this.cID = cID;
+        this.cID = counter;
         counter++;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        if (title != null && title.matches("[A-ZĒŪĪĻĶĢŠĀŽČŅa-zēīļšāžčņ]+")){
+            this.title = title;
+        }else
+            this.title = "none";
     }
 
-    public void setCreditPoint(int creditPoint) throws Exception {
-        if(creditPoint >=0) {
+    public void setCreditPoint(int creditPoint) {
+        if(creditPoint > 0 && creditPoint <=20) {
             this.creditPoint = creditPoint;
-        }else throw new Exception("Can not be smaller than 0");
+        }else
+            this.creditPoint = 1;
     }
 
     public void setProfessor(Professor professor) {
-        this.professor = professor;
+        if (professor != null){
+            this.professor = professor;
+        }else {
+            this.professor = new Professor();
+        }
+
     }
 
     public Course(){
         setcID();
-        this.title = "";
+        this.title = "nav";
         this.creditPoint = 0;
-        this.professor = null;
+        this.professor = new Professor();
     }
 
     public Course(String title, int creditPoint, Professor professor){
         setcID();
         setTitle(title);
-        try {
-            setCreditPoint(creditPoint);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        setCreditPoint(creditPoint);
         setProfessor(professor);
 
     }

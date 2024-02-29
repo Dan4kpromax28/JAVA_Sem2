@@ -38,16 +38,29 @@ public class Grade {
         if (value >= 0 && value <= 10){
             this.value = value;
         }
-        else throw new Exception("Incorrect value");
+        else {
+            this.value = 0;
+        }
     }
 
     public void setStudent(Student student) {
-        this.student = student;
+        if (student != null){
+            this.student = student;
+        }else {
+            this.student = new Student();
+        }
+
     }
 
     public void setCourse(Course course) {
-        this.course = course;
+        if (course != null){
+            this.course = course;
+        }else{
+            this.course = new Course();
+        }
+
     }
+
 
     @Override
     public String toString() {

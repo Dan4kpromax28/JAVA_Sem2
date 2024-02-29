@@ -24,12 +24,12 @@ public class Student {
     }
 
     public void setStID() {
-        this.stID = stID;
+        this.stID = counter;
         counter++;
     }
 
     public void setName(String name) {
-        if (name != null && name.matches("[A-Z]{1}[a-z]+")){
+        if (name != null && name.matches("[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēīļšāžčņ]+")){
             this.name = name;
         }
         else {
@@ -38,7 +38,7 @@ public class Student {
     }
 
     public void setSurname(String surname) {
-        if (surname != null && surname.matches("[A-Z]{1}[a-z]+")){
+        if (surname != null && surname.matches("[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēīļšāžčņ]+")){
             this.surname = surname;
         }
         else {
@@ -48,8 +48,8 @@ public class Student {
 
     public Student(){
         setStID();
-        this.name = "";
-        this.surname = "";
+        this.name = "Aleksandrs";
+        this.surname = "Rjabovs";
     }
 
     public Student(String name, String surname){
