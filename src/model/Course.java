@@ -64,6 +64,7 @@ public class Course {
             System.out.println(e.getMessage());
         }
         setProfessor(professor);
+
     }
 
 
@@ -76,4 +77,5 @@ public class Course {
                 ", professor=" + professor +
                 '}';
     }
+
 }

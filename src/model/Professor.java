@@ -35,7 +35,7 @@ public class Professor {
     }
 
     public void setName(String name) {
-        if (name != null && name.matches("[A-Z]{1}[a-z]+")){
+        if (name != null && name.matches("[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēīļšāžčņ]+")){
             this.name = name;
         }
         else {
@@ -43,9 +43,9 @@ public class Professor {
         }
 
     }
-
+//for latvian [p]{1}[p]+ or [A-ZĀĒŪĻŠŪ...]{1}[a-zāžēūī..]+
     public void setSurname(String surname) {
-        if (surname != null && surname.matches("[A-Z]{1}[a-z]+")){
+        if (surname != null && surname.matches("[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēīļšāžčņ]+")){
             this.surname = surname;
         }
         else {
@@ -54,7 +54,14 @@ public class Professor {
     }
 
     public void setDegree(Degree degree) {
-        this.degree = degree;
+
+        if(degree != null){
+            this.degree = degree;
+        }
+        else {
+            this.degree = Degree.other;
+        }
+
     }
     //3.constructor
     public Professor() {
