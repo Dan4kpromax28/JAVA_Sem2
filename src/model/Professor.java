@@ -66,9 +66,9 @@ public class Professor {
     //3.constructor
     public Professor() {
         setpId();
-        this.name = "";
-        this.surname = "";
-        this.degree = null;
+        this.name = "Daniels";
+        this.surname = "Balika";
+        this.degree = Degree.other;
     }
 
     public Professor(String name, String surname, Degree degree){
