@@ -41,7 +41,6 @@ public class Grade {
         }else {
             this.student = new Student();
         }
-
     }
 
     public void setCourse(Course course) {
@@ -50,7 +49,6 @@ public class Grade {
         }else{
             this.course = new Course();
         }
-
     }
 
     public Grade(){
