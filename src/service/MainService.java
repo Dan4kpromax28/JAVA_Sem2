@@ -5,9 +5,10 @@ import model.*;
 import java.util.ArrayList;
 
 public class MainService {
-    private static ArrayList<Professor> profLists = new ArrayList<Professor>();
+    //private static ArrayList<Professor> profLists = new ArrayList<Professor>();
     private static ArrayList<Course> courseLists = new ArrayList<Course>();
-    private static ArrayList<Student> studentLists = new ArrayList<Student>();
+    private static ArrayList<Person> personsLists = new ArrayList<Person>();
+    //private static ArrayList<Student> studentLists = new ArrayList<Student>();
     private static ArrayList<Grade> gradeLists = new ArrayList<Grade>();
 
     public static void main(String[] args) {
@@ -16,8 +17,8 @@ public class MainService {
         System.out.println(pr1);
         System.out.println(pr2);
 
-        profLists.add(pr1);
-        profLists.add(pr2);
+        personsLists.add(pr1);
+        personsLists.add(pr2);
 
         Course co1 = new Course();
         Course co2 = new Course("Ekonomika", 4, pr2);
@@ -39,9 +40,9 @@ public class MainService {
         System.out.println(st3);
 
 
-        studentLists.add(st1);
-        studentLists.add(st2);
-        studentLists.add(st3);
+        personsLists.add(st1);
+        personsLists.add(st2);
+        personsLists.add(st3);
 
         Grade gr1 = new Grade();
         Grade gr2 = new Grade(5, co2, st2);
@@ -57,17 +58,27 @@ public class MainService {
         gradeLists.add(gr4);
         gradeLists.add(gr5);
 
+        for (Person temp : personsLists){
+            System.out.println(temp);
+        } // visi personas
 
-        for (Professor prof : profLists){
-            System.out.println(prof);
+
+        for (Person tempP : personsLists){
+            if(tempP instanceof Professor){
+                System.out.println(tempP);
+            }
+
         }
 
         for (Course cour : courseLists){
             System.out.println(cour);
         }
 
-        for (Student stud : studentLists){
-            System.out.println(stud);
+        for (Person tempS : personsLists){
+            if(tempS instanceof Student){
+                System.out.println(tempS);
+            }
+
         }
 
         for (Grade grad : gradeLists){
@@ -98,18 +109,17 @@ public class MainService {
 
         try {
             sortStudentsByAVG();
-            for (Student TempSt : studentLists){
-                System.out.println(TempSt);
+            for (Person TempSt : personsLists){
+                if(TempSt instanceof Student){
+                    System.out.println(TempSt);
+                }
+
 
             }
         } catch (Exception e) {
             System.out.println(e);
         }
-        try {
-            System.out.println(calculateAVG(studentLists.get(0)));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        // AVG
 
 //TODO CRUD funkcijas
         // TODO izprintet ari pie reizes vid.atzimes
@@ -186,14 +196,17 @@ public class MainService {
     public static ArrayList<Student> sortStudentsByAVG(){
         ArrayList<Student> result = new ArrayList<Student>();
 
-        for (Student tempSt : studentLists){
-            try {
-                calculateAVG(tempSt);
-                result.add(tempSt);
+        for (Person tempSt : personsLists){
+            if(tempSt instanceof Student){
+                try {
+                    calculateAVG((Student) tempSt);
+                    result.add((Student) tempSt);
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                }
             }
-            catch (Exception e){
-                System.out.println(e);
-            }
+
         }
         for (int i = 0; i < result.size(); i++){
             for (int j = 0; j < result.size(); j++){
@@ -218,15 +231,15 @@ public class MainService {
     public static void createStudent(String name, String surname) throws Exception {
         if(name == null || surname == null) throw new Exception("Problems with input argument");
         boolean isFound = false;
-        for (Student tempSt : studentLists){
-            if (tempSt.getName().equals(name) && tempSt.getSurname().equals(surname)){
+        for (Person tempSt : personsLists){
+            if (tempSt.getName().equals(name) && tempSt.getSurname().equals(surname) && tempSt instanceof Student){
                 isFound = true;
                 break; // throw new Exception(name + " " + surname + " is already used";
             }
         }
         if(!isFound) {
             Student st = new Student(name, surname);
-            studentLists.add(st);
+            personsLists.add(st);
         }
     }
 
@@ -236,9 +249,9 @@ public class MainService {
     public static Student retriveStudentBySurname(String surname) throws Exception {
         if (surname == null) throw new Exception("Problem with input argument");
 
-        for(Student tempSt : studentLists){
-            if (tempSt.getSurname().equals(surname)){
-                return tempSt;
+        for(Person tempSt : personsLists){
+            if (tempSt.getSurname().equals(surname) && tempSt instanceof Student){
+                return (Student) tempSt;
             }
         }
 
@@ -252,8 +265,8 @@ public class MainService {
             throw new Exception("Problems with input arguments");
         }
 
-        for (Student tempSt : studentLists){
-            if (tempSt.getName().equals(name) && tempSt.getSurname().equals(surname)){
+        for (Person tempSt : personsLists){
+            if (tempSt.getName().equals(name) && tempSt.getSurname().equals(surname) && tempSt instanceof Student){
                 if(!surname.equals(newSurname))
                     tempSt.setSurname(newSurname);
             }
@@ -269,9 +282,9 @@ public class MainService {
         if (name == null || surname == null){
             throw new Exception("Problem with input arguments");
         }
-        for (Student tempSt : studentLists){
-            if (tempSt.getName().equals(name) && tempSt.getSurname().equals(surname)){
-                studentLists.remove(tempSt);
+        for (Person tempSt : personsLists){
+            if (tempSt.getName().equals(name) && tempSt.getSurname().equals(surname) && tempSt instanceof Student){
+                personsLists.remove(tempSt);
                 return;
             }
 

@@ -1,11 +1,10 @@
 package model;
 
 
-public class Professor {
+public class Professor extends Person{
     //1.variables
     private long pId;
-    private String name;
-    private String surname;
+
     private Degree degree;
 
     private static long counter = 0; // ja to maino kkur tas mainas visur
@@ -17,13 +16,7 @@ public class Professor {
         return pId;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public String getSurname() {
-        return surname;
-    }
 
     public Degree getDegree() {
         return degree;
@@ -34,24 +27,7 @@ public class Professor {
         counter++;
     }
 
-    public void setName(String name) {
-        if (name != null && name.matches("[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēīļšāžčņ]+")){
-            this.name = name;
-        }
-        else {
-            this.name = "None";
-        }
 
-    }
-//for latvian [p]{1}[p]+ or [A-ZĀĒŪĻŠŪ...]{1}[a-zāžēūī..]+
-    public void setSurname(String surname) {
-        if (surname != null && surname.matches("[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēīļšāžčņ]+")){
-            this.surname = surname;
-        }
-        else {
-            this.surname = "None";
-        }
-    }
 
     public void setDegree(Degree degree) {
 
@@ -65,16 +41,15 @@ public class Professor {
     }
     //3.constructor
     public Professor() {
+        super();
         setpId();
-        this.name = "Daniels";
-        this.surname = "Balika";
+
         this.degree = Degree.other;
     }
 
     public Professor(String name, String surname, Degree degree){
+        super(name,surname);
         setpId();
-        setName(name);
-        setSurname(surname);
         setDegree(degree);
     }
     //4.toString function
@@ -83,8 +58,7 @@ public class Professor {
     public String toString() {
         return "Professor{" +
                 "pId=" + pId +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                ", name='" + super.toString() +
                 ", degree=" + degree +
                 '}';
     }
