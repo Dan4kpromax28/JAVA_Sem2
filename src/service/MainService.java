@@ -97,7 +97,7 @@ public class MainService {
         }
 
         try {
-            sortStudentsByAVG(studentLists);
+            sortStudentsByAVG();
             for (Student TempSt : studentLists){
                 System.out.println(TempSt);
             }
@@ -179,7 +179,7 @@ public class MainService {
         return howMany;
     }
 
-    public static void sortStudentsByAVG(ArrayList<Student> studentLists) throws Exception{
+    public static void sortStudentsByAVG() throws Exception{
         if (studentLists == null){
             throw new Exception("there is no student");
         }
@@ -191,8 +191,27 @@ public class MainService {
                     studentLists.set(j, tempSt);
                 }
             }
-
-            }
         }
     }
+
+    //CRUD - create - retrive - update - delite
+    // create
+    //TODO pielkt personas kodu
+    public static void createStudent(String name, String surname) throws Exception {
+        if(name == null || surname == null) throw new Exception("Problems with input argument");
+        boolean isFound = false;
+        for (Student tempSt : studentLists){
+            if (tempSt.getName().equals(name) && tempSt.getSurname().equals(surname)){
+                isFound = true;
+                break; // throw new Exception(name + " " + surname + " is already used";
+            }
+        }
+        if(!isFound) {
+            Student st = new Student(name, surname);
+            studentLists.add(st);
+        }
+    }
+
+
+}
 
