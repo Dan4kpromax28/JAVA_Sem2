@@ -1,10 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Course {
     private long cID;
     private String title;
     private int creditPoint;
-    private Professor professor;
+    private ArrayList<Professor> professor = new ArrayList<Professor>();
 
     private static long counter = 100000;
 
@@ -22,7 +25,7 @@ public class Course {
         return creditPoint;
     }
 
-    public Professor getProfessor() {
+    public ArrayList<Professor> getProfessor() {
         return professor;
     }
 
@@ -45,11 +48,11 @@ public class Course {
             this.creditPoint = 1;
     }
 
-    public void setProfessor(Professor professor) {
+    public void setProfessor(ArrayList<Professor> professor) {
         if (professor != null){
             this.professor = professor;
         }else {
-            this.professor = new Professor();
+            this.professor = new ArrayList<Professor>(Arrays.asList(new Professor()));
         }
 
     }
@@ -58,10 +61,10 @@ public class Course {
         setcID();
         setTitle("Prorammesana JAVA");
         setCreditPoint(4);
-        setProfessor(new Professor());
+        setProfessor(new ArrayList<Professor>(Arrays.asList(new Professor())));
     }
 
-    public Course(String title, int creditPoint, Professor professor){
+    public Course(String title, int creditPoint, ArrayList<Professor> professor){
         setcID();
         setTitle(title);
         setCreditPoint(creditPoint);
@@ -78,6 +81,18 @@ public class Course {
                 ", creditPoint=" + creditPoint +
                 ", professor=" + professor +
                 '}';
+    }
+
+    public void addProfessor(Professor professor){
+        if(!this.professor.contains(professor)){
+            this.professor.add(professor);
+        }
+    }
+
+    public void removeProfessor(Professor professor){
+        if(!this.professor.contains(professor)){
+            this.professor.remove(professor);
+        }
     }
 
 }

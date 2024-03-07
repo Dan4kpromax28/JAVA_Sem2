@@ -3,6 +3,7 @@ package service;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainService {
     private static ArrayList<Professor> profLists = new ArrayList<Professor>();
@@ -13,19 +14,27 @@ public class MainService {
     public static void main(String[] args) {
         Professor pr1 = new Professor();
         Professor pr2 = new Professor("Deniss", "Kolupajevs", Degree.mg);
+        Professor pr3 = new Professor("Arturs", "Orbidans", Degree.mg);
+        Professor pr4 = new Professor("Marcis", "Naktins", Degree.mg);
         System.out.println(pr1);
         System.out.println(pr2);
+        System.out.println(pr3);
+        System.out.println(pr4);
 
         profLists.add(pr1);
         profLists.add(pr2);
+        profLists.add(pr3);
+        profLists.add(pr4);
 
         Course co1 = new Course();
-        Course co2 = new Course("Ekonomika", 4, pr2);
-        Course co3 = new Course("Matematika", 2 ,pr2);
+        Course co2 = new Course("Ekonomika", 4, new ArrayList<Professor>(Arrays.asList(pr2)));
+        Course co3 = new Course("Matematika", 2 ,new ArrayList<Professor>(Arrays.asList(pr2)));
+        Course co4 = new Course("Datorsistemas", 2 ,new ArrayList<Professor>(Arrays.asList(pr3,pr4)));
 
         System.out.println(co1);
         System.out.println(co2);
         System.out.println(co3);
+        System.out.println(co4);
 
         courseLists.add(co1);
         courseLists.add(co2);
