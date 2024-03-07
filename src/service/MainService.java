@@ -179,20 +179,7 @@ public class MainService {
         return howMany;
     }
 
-    public static void sortStudentsByAVG() throws Exception{
-        if (studentLists == null){
-            throw new Exception("there is no student");
-        }
-        for (int i = 0; i < studentLists.size(); i++){
-            for (int j = i + 1; j < studentLists.size(); j++){
-                if (calculateAVG(studentLists.get(i)) < calculateAVG(studentLists.get(j))){
-                    Student tempSt = studentLists.get(i);
-                    studentLists.set(i, studentLists.get(j));
-                    studentLists.set(j, tempSt);
-                }
-            }
-        }
-    }
+
 
     public static ArrayList<Student> sortStudentsByAVG(){
         ArrayList<Student> result = new ArrayList<Student>();
@@ -220,6 +207,7 @@ public class MainService {
                 }
             }
         }
+        return result;
 
 
     }
