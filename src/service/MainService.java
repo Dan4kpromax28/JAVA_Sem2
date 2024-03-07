@@ -100,6 +100,7 @@ public class MainService {
             sortStudentsByAVG();
             for (Student TempSt : studentLists){
                 System.out.println(TempSt);
+
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -110,7 +111,8 @@ public class MainService {
             System.out.println(e);
         }
 
-
+//TODO CRUD funkcijas
+        // TODO izprintet ari pie reizes vid.atzimes
     }
 
     public static float calculateAVG(Student student) throws Exception {
@@ -208,8 +210,6 @@ public class MainService {
             }
         }
         return result;
-
-
     }
 
     //CRUD - create - retrive - update - delite
@@ -278,8 +278,6 @@ public class MainService {
         }
         throw new Exception("is not registred in system");
     }
-
-
 
 
 }
