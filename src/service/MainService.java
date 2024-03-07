@@ -213,5 +213,36 @@ public class MainService {
     }
 
 
+    //retrive by surname
+    //TODO atgriezt pec personas koda
+    public static Student retriveStudentBySurname(String surname) throws Exception {
+        if (surname == null) throw new Exception("Problem with input argument");
+
+        for(Student tempSt : studentLists){
+            if (tempSt.getSurname().equals(surname)){
+                return tempSt;
+            }
+        }
+
+        throw new Exception(surname + " is not registred in system");
+
+    }
+    //TODO retrieveAllStudents - pec nepieciesamibas
+
+    public static void updatedStudentByNameAndSurname(String name, String surname, String newSurname) throws Exception {
+        if (name == null || surname == null || newSurname == null){
+            throw new Exception("Problems with input arguments");
+        }
+
+        for (Student tempSt : studentLists){
+            if (tempSt.getName().equals(name) && tempSt.getSurname().equals(surname)){
+                if(!surname.equals(newSurname))
+                    tempSt.setSurname(newSurname);
+            }
+
+        }
+        throw new Exception(surname + " is not registred in system");
+    }
+
 }
 
