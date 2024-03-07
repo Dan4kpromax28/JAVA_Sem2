@@ -194,6 +194,36 @@ public class MainService {
         }
     }
 
+    public static ArrayList<Student> sortStudentsByAVG(){
+        ArrayList<Student> result = new ArrayList<Student>();
+
+        for (Student tempSt : studentLists){
+            try {
+                calculateAVG(tempSt);
+                result.add(tempSt);
+            }
+            catch (Exception e){
+                System.out.println(e);
+            }
+        }
+        for (int i = 0; i < result.size(); i++){
+            for (int j = 0; j < result.size(); j++){
+                try {
+                    if(calculateAVG(result.get(i)) < calculateAVG(result.get(j))){
+                        Student temp = result.get(i);
+                        result.set(i,result.get(j));
+                        result.set(j,temp);
+
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        }
+
+
+    }
+
     //CRUD - create - retrive - update - delite
     // create
     //TODO pielkt personas kodu
@@ -243,6 +273,26 @@ public class MainService {
         }
         throw new Exception(surname + " is not registred in system");
     }
+
+    //delite by name and surname
+    //TODO ievest personas kodu, pec kura dzest
+
+    public static void removeByNameAndSurname(String name, String surname) throws Exception {
+        if (name == null || surname == null){
+            throw new Exception("Problem with input arguments");
+        }
+        for (Student tempSt : studentLists){
+            if (tempSt.getName().equals(name) && tempSt.getSurname().equals(surname)){
+                studentLists.remove(tempSt);
+                return;
+            }
+
+        }
+        throw new Exception("is not registred in system");
+    }
+
+
+
 
 }
 
